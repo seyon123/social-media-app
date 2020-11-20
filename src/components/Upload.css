@@ -1,0 +1,11 @@
+.upload {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 15px auto;
+    max-width: 500px;
+}
+
+.uploadProgress {
+    width: 100%;
+}

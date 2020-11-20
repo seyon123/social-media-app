@@ -1,0 +1,62 @@
+.post {
+    max-width: 500px;
+    background-color: var(--grey);
+    border-radius: 5px;
+    border: 1px solid var(--icon-bg) ;
+    margin-bottom: 50px;
+}
+
+.postHeader {
+    display: flex;
+    align-items: center;
+    padding: 10px
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 40px;
+    margin: 5px 10px 5px 5px
+}
+
+.postImage {
+    width: 100%;
+    object-fit: contain;
+    border-top: 1px solid var(--icon-bg) ;
+    border-bottom: 1px solid var(--icon-bg) ;
+}
+
+.postComments {
+    padding: 10px;
+}
+
+.postCaption {
+    text-align: left;
+    padding: 0px;
+}
+
+.postCommentsInput {
+    display: flex;
+    margin-top: 10px;
+    border-top: 2px solid var(--icon-bg) ;
+}
+
+.message {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.postComment {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    background-color: var(--grey);
+}
+
+.postButton {
+    flex: 0;
+    background-color: var(--grey);
+    border: none;
+    color: var(--purple);
+    padding: 10px;
+}
