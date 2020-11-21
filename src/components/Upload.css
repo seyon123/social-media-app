@@ -1,12 +1,18 @@
 .upload {
-    display: flex;
-    flex-direction: column;
-    width: calc(100%);
+    position: sticky;
+    bottom: 0px;
+    width: calc(100% - 2px);
     margin: 15px auto;
-    max-width: calc(500px);
     border-radius: 5px;
     background-color: var(--grey);
-    border: 1px solid var(--icon-bg) ;
+}
+
+.uploadContent{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .uploadPreview{
@@ -46,6 +52,11 @@ input[type="file"] {
     margin: 10px;
     font-size: 0.8em;
     flex: 1;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    color: var(--icon-bg);
 }
 
 .customFileUpload  i{

@@ -48,6 +48,8 @@ function Upload({ user }) {
 						setProgress(0);
 						setCaption("");
 						setImage(null);
+						setFile(null);
+						document.getElementById('root').scrollIntoView({ behavior: 'smooth' });
 					});
 			}
 		);
@@ -55,28 +57,35 @@ function Upload({ user }) {
 
 	return (
 		<div className="upload">
-			<div className="postHeader">
-				<h3 className="uploadPreview">POST PREVIEW</h3>
-			</div>
+			<div className="uploadContent">
 			
-			<img className="postImage" src={file}/>
-			<input 
-				className="uploadCaption"
-				type="text"
-				placeholder="Enter a caption..."
-				onChange={(event) => setCaption(event.target.value)}
-				value={caption}
-			/>
-			<div className="uploadButtons">
-				<label for="file-upload" className="customFileUpload">
-					<i class="fas fa-file-upload"></i> Upload Image
-				</label>
-				<input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
-				<button type="submit" onClick={handleUpload} className="postButton">
-					Post
-				</button>
+				{file &&
+				<>
+					<div className="postHeader">
+						<h3 className="uploadPreview">POST PREVIEW</h3>
+					</div>
+					
+					<img className="postImage" src={file}/>
+				</>
+				}
+				<input 
+					className="uploadCaption"
+					type="text"
+					placeholder="Enter a caption..."
+					onChange={(event) => setCaption(event.target.value)}
+					value={caption}
+				/>
+				<div className="uploadButtons">
+					<label for="file-upload" className="customFileUpload">
+						<i class="fas fa-file-upload"></i> Upload Image
+					</label>
+					<input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
+					<button type="submit" disabled={!file && !caption} onClick={handleUpload} className="postButton">
+						Post
+					</button>
+				</div>
+				<progress className="uploadProgress" value={progress} max="100"></progress>
 			</div>
-			<progress className="uploadProgress" value={progress} max="100"></progress>
 		</div>
 	);
 }
