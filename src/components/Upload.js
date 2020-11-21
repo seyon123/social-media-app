@@ -7,23 +7,16 @@ import "./Upload.css";
 function Upload({ user }) {
 	const [caption, setCaption] = useState("");
 	const [image, setImage] = useState(null);
-	const [url, setUrl] = useState("");
+	const [file, setFile] = useState(null);
 	const [progress, setProgress] = useState(0);
 
 	const handleFileChange = (e) => {
 		if (e.target.files[0]) {
 			setImage(e.target.files[0]);
 		}
+		setFile(URL.createObjectURL(e.target.files[0]));
     };
 
-    // function getPhoto(){
-    //     if (user) {
-    //         return (user.photoURL || `https://avatars.dicebear.com/api/gridy/${user.email}.svg`);
-    //     }
-    // }
-
-    // console.log(getPhoto());
-    
 
 	const handleUpload = () => {
 		const uploadTask = storage.ref(`images/${image.name}`).put(image);
@@ -62,17 +55,28 @@ function Upload({ user }) {
 
 	return (
 		<div className="upload">
-			<progress className="uploadProgress" value={progress} max="100"></progress>
-			<input
+			<div className="postHeader">
+				<h3 className="uploadPreview">POST PREVIEW</h3>
+			</div>
+			
+			<img className="postImage" src={file}/>
+			<input 
+				className="uploadCaption"
 				type="text"
 				placeholder="Enter a caption..."
 				onChange={(event) => setCaption(event.target.value)}
 				value={caption}
 			/>
-			<input type="file" onChange={handleFileChange} />
-			<button type="submit" onClick={handleUpload} className="postButton">
-				Post
-			</button>
+			<div className="uploadButtons">
+				<label for="file-upload" className="customFileUpload">
+					<i class="fas fa-file-upload"></i> Upload Image
+				</label>
+				<input id="file-upload" type="file" accept="image/*" onChange={handleFileChange} />
+				<button type="submit" onClick={handleUpload} className="postButton">
+					Post
+				</button>
+			</div>
+			<progress className="uploadProgress" value={progress} max="100"></progress>
 		</div>
 	);
 }

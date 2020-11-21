@@ -3,6 +3,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	text-align: center;
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -51,6 +52,11 @@
 
 html {
 	scroll-behavior: smooth;
+}
+
+input {
+	text-align: left;
+	color: var(--head-light)
 }
 
 ::-webkit-scrollbar {

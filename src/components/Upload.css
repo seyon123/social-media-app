@@ -1,11 +1,63 @@
 .upload {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: calc(100%);
     margin: 15px auto;
-    max-width: 500px;
+    max-width: calc(500px);
+    border-radius: 5px;
+    background-color: var(--grey);
+    border: 1px solid var(--icon-bg) ;
+}
+
+.uploadPreview{
+    text-align: center;
+    width: 100%;
 }
 
 .uploadProgress {
-    width: 100%;
+    width: calc(100% - 20px);
+    background: var(--dark);
+    margin: 10px;
+}
+
+.uploadCaption {
+    margin: 10px;
+    background-color: var(--dark);
+    border-radius: 5px;
+    padding: 10px;
+    border: none;
+}
+
+.uploadButtons{
+    display: flex;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.customFileUpload {
+    display: inline-block;
+    cursor: pointer;
+    width: fit-content;
+    padding: 10px;
+    background-color: var(--dark);
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 0.8em;
+    flex: 1;
+}
+
+.customFileUpload  i{
+    font-size: 14px;
+}
+
+.postButton{
+    flex: 1;
+    cursor: pointer;
+    margin: 10px;
+    background-color: var(--dark);
+    border-radius: 5px;
+    border: none;
+    color: var(--purple);
 }

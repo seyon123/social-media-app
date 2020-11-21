@@ -65,7 +65,7 @@ function Post({ postId, post, user }) {
             {user ?
             <form className="postCommentsInput">
                 <input className="postComment" type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)}/>
-                <button className="postButton" type="submit" disabled={!comment} onClick={postComment}> Post </button>
+                <button className="postCommentButton" type="submit" disabled={!comment} onClick={postComment}> Post </button>
             </form> : 
             ""
             }

@@ -27,6 +27,7 @@
 
 .postComments {
     padding: 10px;
+    font-size: 14px;
 }
 
 .postCaption {
@@ -53,8 +54,9 @@
     background-color: var(--grey);
 }
 
-.postButton {
+.postCommentButton {
     flex: 0;
+    cursor: pointer;
     background-color: var(--grey);
     border: none;
     color: var(--purple);
