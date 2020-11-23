@@ -53,11 +53,13 @@ function Post({ postId, post, user }) {
 			/>
 			
             <div className="postComments">
+                {post.caption &&
                 <p className="postCaption">
                     <b>{post.username}</b> {post.caption}
                 </p>
-                {comments.map((comment) => (
-                    <p className="postCaption">
+                }
+                {comments.map((comment , i) => (
+                    <p key={i} className="postCaption">
                         <b>{comment.username}</b> {comment.text}
                     </p>
                 ))}

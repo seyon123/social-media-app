@@ -113,6 +113,10 @@
 		height: 0;
 	}
 
+	.header {
+		z-index: 0;
+	}
+
 	.headerTheme {
 		position: absolute;
 		top: 0;

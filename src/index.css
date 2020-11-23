@@ -59,6 +59,11 @@ input {
 	color: var(--head-light)
 }
 
+button:disabled {
+	cursor: not-allowed;
+	opacity: 50%;
+}
+
 ::-webkit-scrollbar {
     width: 10px;
     height: 8px;

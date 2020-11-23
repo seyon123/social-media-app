@@ -1,4 +1,5 @@
 .post {
+    width: 100%;
     max-width: 500px;
     background-color: var(--grey);
     border-radius: 5px;
@@ -20,14 +21,19 @@
 
 .postImage {
     width: 100%;
-    object-fit: contain;
+    max-width: 500px;
+    max-height: 500px;
+    object-fit: cover;
     border-top: 1px solid var(--icon-bg) ;
     border-bottom: 1px solid var(--icon-bg) ;
 }
 
 .postComments {
     padding: 10px;
+    text-align: left;
     font-size: 14px;
+    text-align: left;
+    word-wrap: break-word;
 }
 
 .postCaption {

@@ -46,6 +46,7 @@ function App() {
 
 	return (
 		<div className="App">
+			<div className="filter"></div>
 			<Router>
 				<Switch>
 					<Route exact path="/login">
