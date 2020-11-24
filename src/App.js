@@ -2,12 +2,14 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import Header from "./components/Header";
 import Login from "./components/Login";
 import Post from "./components/Post";
+import SinglePost from "./components/SinglePost";
 import Upload from "./components/Upload";
 import Footer from "./components/Footer";
 import { db, auth } from "./firebase";
 import "./App.css";
 import { useEffect, useState } from "react";
 import { useStateValue } from "./StateProvider";
+
 
 
 
@@ -51,6 +53,11 @@ function App() {
 				<Switch>
 					<Route exact path="/login">
 						<Login />
+					</Route>
+					<Route exact path="/post/:id">
+						<Header />
+						<SinglePost />
+						<Footer/>
 					</Route>
 					<Route exact path="/">
 						<Header />

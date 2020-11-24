@@ -7,6 +7,11 @@
     margin-bottom: 50px;
 }
 
+.post a{
+    text-decoration: none;
+    color: var(--light);
+}
+
 .postHeader {
     display: flex;
     align-items: center;
@@ -22,7 +27,7 @@
 .postImage {
     width: 100%;
     max-width: 500px;
-    max-height: 500px;
+    max-height: 700px;
     object-fit: cover;
     border-top: 1px solid var(--icon-bg) ;
     border-bottom: 1px solid var(--icon-bg) ;
@@ -44,7 +49,7 @@
 .postCommentsInput {
     display: flex;
     margin-top: 10px;
-    border-top: 2px solid var(--icon-bg) ;
+    border-top: 1px solid var(--icon-bg) ;
 }
 
 .message {

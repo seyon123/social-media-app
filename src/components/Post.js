@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import firebase from "firebase";
 import "./Post.css";
+import { Link } from "react-router-dom";
 
 function Post({ postId, post, user }) {
 
@@ -9,20 +10,14 @@ function Post({ postId, post, user }) {
     const [comment, setComment] = useState('');
 
     useEffect(() => {
-        let unsubscribe;
-
         if(postId){
-            unsubscribe = db.collection("posts")
+            db.collection("posts")
             .doc(postId)
             .collection("comments")
-            .orderBy("timestamp", "desc")
+            .orderBy("timestamp", "asc")
             .onSnapshot((snapshot)=>{
-                setComments(snapshot.docs.map((doc)=>doc.data()));
+                setComments(snapshot.docs.slice(0, 3).map((doc)=>doc.data()));
             });
-        }
-
-        return () => {
-            unsubscribe();
         }
     }, [postId])
 
@@ -36,7 +31,7 @@ function Post({ postId, post, user }) {
         setComment('');
     }
 
-	return post ? (
+	return post && (
 		<div className="post">
 			<div className="postHeader">
 				<img
@@ -47,23 +42,26 @@ function Post({ postId, post, user }) {
 				/>
 				<h3 className="postUsername">{post.username}</h3>
 			</div>
-			<img
-				className="postImage"
-				src={post.imageUrl}
-			/>
-			
-            <div className="postComments">
-                {post.caption &&
-                <p className="postCaption">
-                    <b>{post.username}</b> {post.caption}
-                </p>
-                }
-                {comments.map((comment , i) => (
-                    <p key={i} className="postCaption">
-                        <b>{comment.username}</b> {comment.text}
+            <Link to={`/post/${postId}`}>
+                <img
+                    className="postImage"
+                    src={post.imageUrl}
+                    alt={postId}
+                />
+                
+                <div className="postComments">
+                    {post.caption &&
+                    <p className="postCaption">
+                        <b>{post.username}</b> {post.caption}
                     </p>
-                ))}
-            </div>
+                    }
+                    {comments.map((comment , i) => (
+                        <p key={i} className="postCaption">
+                            <b>{comment.username}</b> {comment.text}
+                        </p>
+                    ))}
+                </div>
+            </Link>
             {user ?
             <form className="postCommentsInput">
                 <input className="postComment" type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)}/>
@@ -72,8 +70,6 @@ function Post({ postId, post, user }) {
             ""
             }
 		</div>
-	) : (
-		""
 	);
 }
 

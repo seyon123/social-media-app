@@ -96,7 +96,7 @@ function Upload({ user }) {
 							<h3 className="uploadPreview">POST PREVIEW</h3>
 						</div>
 						
-						<img className="postImage" src={file}/>
+						<img className="postImage" src={file} alt={fileName}/>
 					</>
 					}
 					<input 
