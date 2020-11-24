@@ -5,6 +5,7 @@
     border-radius: 5px;
     border: 1px solid var(--icon-bg) ;
     margin-bottom: 50px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .post a{

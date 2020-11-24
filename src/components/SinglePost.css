@@ -3,6 +3,7 @@
     justify-content: center;
     align-content: center;
     min-height: calc(100vh - 113px);
+    
 }
 
 .singlePost {
@@ -14,6 +15,7 @@
     border-radius: 5px;
     border: 1px solid var(--icon-bg) ;
     margin: 40px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 }
 
 .singlePostImage {
@@ -58,7 +60,5 @@
     .singlePostRight{
         width: unset;
     }
-
-    
 }
 

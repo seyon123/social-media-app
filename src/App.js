@@ -52,7 +52,9 @@ function App() {
 			<Router>
 				<Switch>
 					<Route exact path="/login">
+						<Header />
 						<Login />
+						<Footer/>
 					</Route>
 					<Route exact path="/post/:id">
 						<Header />
