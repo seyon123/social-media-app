@@ -8,7 +8,7 @@
 
 .singlePost {
     width: fit-content;
-    max-height: 537px;
+    /* max-height: 537px; */
     display: flex;
     flex-direction: row;
     background-color: var(--grey);

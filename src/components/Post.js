@@ -8,6 +8,7 @@ function Post({ postId, post, user }) {
 
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
+    const [hasMoreComments, setHasMoreComments] = useState(false);
 
     useEffect(() => {
         if(postId){
@@ -16,7 +17,10 @@ function Post({ postId, post, user }) {
             .collection("comments")
             .orderBy("timestamp", "asc")
             .onSnapshot((snapshot)=>{
-                setComments(snapshot.docs.slice(0, 3).map((doc)=>doc.data()));
+                if(snapshot.docs.length > 3){
+                    setHasMoreComments(true);
+                }
+                setComments(snapshot.docs.slice(Math.max(snapshot.docs.length - 3, 0)).map((doc)=>doc.data()));
             });
         }
     }, [postId])
@@ -52,14 +56,15 @@ function Post({ postId, post, user }) {
                 <div className="postComments">
                     {post.caption &&
                     <p className="postCaption">
-                        <b>{post.username}</b> {post.caption}
+                        <strong>{post.username}</strong> {post.caption}
                     </p>
                     }
                     {comments.map((comment , i) => (
                         <p key={i} className="postCaption">
-                            <b>{comment.username}</b> {comment.text}
+                            <strong>{comment.username}</strong> {comment.text}
                         </p>
                     ))}
+                    {hasMoreComments && <p className="postCaption postMoreComments">See all comments ...</p>}
                 </div>
             </Link>
             {user ?

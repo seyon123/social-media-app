@@ -47,6 +47,10 @@
     padding: 0px;
 }
 
+.postMoreComments {
+    padding-top: 10px;
+}
+
 .postCommentsInput {
     display: flex;
     margin-top: 10px;

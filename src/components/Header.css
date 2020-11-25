@@ -36,8 +36,8 @@
 }
 
 .headerSearchIcon {
-	padding: 5px 8.5px;
-    margin: 0 10px;
+	padding: 5px 8px;
+    margin-right: 10px;
     line-height: 22px;
     display: block;
     text-align: center;
@@ -45,6 +45,11 @@
     background: var(--gradient);
     border-radius: 24px;
     width: 22px;
+}
+
+.headerAvatar{
+	border-radius: 50%;
+	width: 30px;
 }
 
 .headerOptionLineOne {
@@ -60,11 +65,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 5px;
-}
-
-.headerBasketCount {
-	margin-left: 10px;
+	margin: 5px 12px;
+	font-size: 20px
 }
 
 .headerNavContainer {
@@ -77,6 +79,10 @@
 	flex-direction: column;
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+.loginOption{
+	margin-left: 0;
 }
 
 .headerTheme {
@@ -108,13 +114,15 @@
 		margin: 5px 0;
 	}
 
+	.headerLogo {
+		object-fit: contain;
+		margin: 0 20px;
+		font-size: 1.7em;
+	}
+
 	.break {
 		flex-basis: 100%;
 		height: 0;
-	}
-
-	.header {
-		z-index: 0;
 	}
 
 	.headerTheme {
