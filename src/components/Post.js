@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 function Post({ postId, post, user }) {
 
     const [comments, setComments] = useState([]);
+    const [likedPosts, setlikedPosts] = useState([]);
     const [comment, setComment] = useState('');
     const [hasMoreComments, setHasMoreComments] = useState(false);
+    const icon = document.getElementById(postId);
+
 
     useEffect(() => {
         if(postId){
@@ -23,7 +26,39 @@ function Post({ postId, post, user }) {
                 setComments(snapshot.docs.slice(Math.max(snapshot.docs.length - 3, 0)).map((doc)=>doc.data()));
             });
         }
+
     }, [postId])
+
+    useEffect(()=> {
+        if(postId && user){
+
+            db.collection("users").doc(user.email).collection("likes").onSnapshot((snapshot)=>{
+                setlikedPosts(snapshot.docs.map((doc)=>doc.id));
+            });
+
+            if(likedPosts.indexOf(postId) >= 0){
+                icon.classList.add('fas');
+            }
+        }
+    }, [postId, likedPosts.length, icon, user])
+
+    const changeHeart = () => {
+        if(postId && user){
+            icon.classList.toggle('fas');
+
+            if(icon.classList.contains('fas')){
+                db.collection("users").doc(user.email).collection("likes").doc(postId).set({
+                    post: postId
+                });
+            }else{
+                db.collection("users").doc(user.email).collection("likes").doc(postId).delete().then(function() {
+                    console.log("Document successfully deleted!");
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+            }
+        }
+    }
 
     const postComment= (event) => {
         event.preventDefault();
@@ -52,21 +87,30 @@ function Post({ postId, post, user }) {
                     src={post.imageUrl}
                     alt={postId}
                 />
-                
-                <div className="postComments">
-                    {post.caption &&
-                    <p className="postCaption">
-                        <strong>{post.username}</strong> {post.caption}
-                    </p>
-                    }
-                    {comments.map((comment , i) => (
-                        <p key={i} className="postCaption">
-                            <strong>{comment.username}</strong> {comment.text}
-                        </p>
-                    ))}
-                    {hasMoreComments && <p className="postCaption postMoreComments">See all comments ...</p>}
-                </div>
             </Link>
+            <div className="postInteractionBar">
+                <i onClick={changeHeart} id={postId} className="far fa-heart postInteractionItem postHeart"></i>
+                <Link to={`/post/${postId}`}>
+                    <i className="far fa-comment postInteractionItem"></i>
+                </Link>
+            </div>
+                
+            <div className="postComments">
+                {post.caption &&
+                <p className="postCaption">
+                    <strong>{post.username}</strong> {post.caption}
+                </p>
+                }
+                {comments.map((comment , i) => (
+                    <p key={i} className="postCaption">
+                        <strong>{comment.username}</strong> {comment.text}
+                    </p>
+                ))}
+                <Link to={`/post/${postId}`}>
+                    {hasMoreComments && <p className="postCaption postMoreComments">See all comments ...</p>}
+                </Link>
+            </div>
+            
             {user ?
             <form className="postCommentsInput">
                 <input className="postComment" type="text" placeholder="Add a comment..." value={comment} onChange={(e) => setComment(e.target.value)}/>

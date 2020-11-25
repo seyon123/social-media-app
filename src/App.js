@@ -10,9 +10,6 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { useStateValue } from "./StateProvider";
 
-
-
-
 function App() {
 	const [{ user }, dispatch] = useStateValue();
 

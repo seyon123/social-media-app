@@ -34,6 +34,21 @@
     border-bottom: 1px solid var(--icon-bg) ;
 }
 
+.postInteractionBar{
+    padding: 5px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--icon-bg) ;
+}
+
+.postInteractionItem{
+    padding: 0px 20px 0 0;
+    font-size: 24px;
+}
+
+.postHeart{
+    color: var(--purple);
+}
+
 .postComments {
     padding: 10px;
     text-align: left;
@@ -49,6 +64,10 @@
 
 .postMoreComments {
     padding-top: 10px;
+}
+
+.postMoreComments:hover {
+    text-decoration: underline;
 }
 
 .postCommentsInput {
