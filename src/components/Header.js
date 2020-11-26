@@ -50,24 +50,26 @@ function Header() {
 			<div className="break" ></div>
 
 			<div className="headerNavContainer">
-				<Link to="/" className="link">
+				<Link to="/" className="link headerOptionBasket">
 					<div className="headerOptionBasket">
 						<i className="fas fa-home"></i>
 					</div>
 				</Link>
 
-				<Link target="_blank" to="/chat" className="link" onClick={(event) => {event.preventDefault(); window.open("http://messagemeapp.netlify.app/");}}>
+				<Link target="_blank" to="/chat" className="link headerOptionBasket" onClick={(event) => {event.preventDefault(); window.open("http://messagemeapp.netlify.app/");}}>
 					<div className="headerOptionBasket">
 						<i className="far fa-comment"></i>
 					</div>
 				</Link>
 
-				<Link to="/profile" className="link">
-					{user && <img className=" headerAvatar" src={user?.photoURL || `https://avatars.dicebear.com/api/gridy/${user?.email}.svg`} alt={user?.email} title={user?.email}/>}
+				<Link to={`/profile/${user?.email}`} className="link headerOptionBasket">
+					<div className="headerOptionBasket">
+						{user && <img className=" headerAvatar" src={user?.photoURL || `https://avatars.dicebear.com/api/gridy/${user?.email}.svg`} alt={user?.email} title={user?.email}/>}
+					</div>
 				</Link>
 
-				<Link to={!user ? "/login" : ""} className="link">
-					<div onClick={handleAuthenticaton} className="headerOption loginOption">
+				<Link to={!user ? "/login" : ""} className="link headerOptionBasket">
+					<div onClick={handleAuthenticaton} >
 						<span className="headerOption">
 							<span className="headerOptionLineOne">
 								{user ? user.email.split('@')[0] : "Hello Guest"}
