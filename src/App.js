@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import Login from "./components/Login";
 import Post from "./components/Post";
 import SinglePost from "./components/SinglePost";
-import Profile from "./components/Profile";
 import Upload from "./components/Upload";
 import Footer from "./components/Footer";
 import { db, auth } from "./firebase";
@@ -57,11 +56,6 @@ function App() {
 					<Route exact path="/post/:id">
 						<Header />
 						<SinglePost />
-						<Footer/>
-					</Route>
-					<Route exact path="/profile/:userid">
-						<Header />
-						<Profile />
 						<Footer/>
 					</Route>
 					<Route exact path="/">

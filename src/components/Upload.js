@@ -54,12 +54,10 @@ function Upload({ user }) {
 				);
 				setProgress(progress);
 			},
-
 			(error) => {
 				console.log(error);
 				alert(error.message);
 			},
-
 			() => {
 				storage
 					.ref("images")
@@ -71,7 +69,6 @@ function Upload({ user }) {
                             avatar: user.photoURL || `https://avatars.dicebear.com/api/gridy/${user.email}.svg`,
 							caption: caption,
 							imageUrl: url,
-							email: user.email,
 							username: user.displayName || user.email.split('@')[0],
 						});
 						setProgress(0);

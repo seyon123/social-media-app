@@ -79,7 +79,7 @@ function Post({ postId, post, user }) {
 					alt={post.username}
 					title={post.username}
 				/>
-				<Link to={`/profile/${post.email}`}><h3 className="postUsername">{post.username}</h3></Link>
+				<h3 className="postUsername">{post.username}</h3>
 			</div>
             <Link to={`/post/${postId}`}>
                 <img
