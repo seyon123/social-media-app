@@ -49,7 +49,7 @@
 
 .headerAvatar{
 	border-radius: 50%;
-	width: 30px;
+	width: 25px;
 }
 
 .headerOptionLineOne {
@@ -65,7 +65,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: 5px 12px;
+	margin: 5px 6px;
 	font-size: 20px
 }
 
@@ -79,10 +79,6 @@
 	flex-direction: column;
 	margin-left: 10px;
 	margin-right: 10px;
-}
-
-.loginOption{
-	margin-left: 0;
 }
 
 .headerTheme {
