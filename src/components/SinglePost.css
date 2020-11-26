@@ -34,9 +34,14 @@
 }
 
 .singlePostComments{
-    min-height: calc(100% - 137px);
+    min-height: calc(100% - 163px);
     max-height: 400px;
     overflow-y: auto;
+}
+
+.singlePostInteractionBar{
+    border-bottom: none;
+    border-top: 1px solid var(--icon-bg) ;
 }
 
 

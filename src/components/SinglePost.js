@@ -12,6 +12,7 @@ function SinglePost() {
     const [comment, setComment] = useState('');
     const [post, setPost] = useState({});
     const [{ user }, dispatch] = useStateValue();
+    const icon = document.getElementById(id);
 
     useEffect(() => {
         if(id){
@@ -42,6 +43,24 @@ function SinglePost() {
         })
         setComment('');
     }
+    
+    const changeHeart = () => {
+        if(id && user){
+            icon.classList.toggle('fas');
+
+            if(icon.classList.contains('fas')){
+                db.collection("users").doc(user.email).collection("likes").doc(id).set({
+                    post: id
+                });
+            }else{
+                db.collection("users").doc(user.email).collection("likes").doc(id).delete().then(function() {
+                    console.log("Document successfully deleted!");
+                }).catch(function(error) {
+                    console.error("Error removing document: ", error);
+                });
+            }
+        }
+    }
 
     return post && (
         <div className="singlePostContainer">
@@ -51,6 +70,7 @@ function SinglePost() {
                     src={post.imageUrl}
                     alt={id}
                 />
+                                
                 <div className="singlePostRight">
                     <div className="postHeader">
                         <img
@@ -72,6 +92,10 @@ function SinglePost() {
                                 <b>{comment.username}</b> {comment.text}
                             </p>
                         ))}
+                    </div>
+                    <div className="postInteractionBar singlePostInteractionBar">
+                        <i onClick={changeHeart} id={id} className="far fa-heart postInteractionItem postHeart"></i>           
+                        <i className="far fa-comment postInteractionItem"></i>
                     </div>
                     {user ?
                         <form className="postCommentsInput">
