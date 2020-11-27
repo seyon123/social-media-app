@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { db } from '../firebase';
 import firebase from "firebase";
 import { useStateValue } from '../StateProvider';
@@ -84,12 +84,12 @@ function SinglePost() {
                     <div className="postComments singlePostComments">
                         {post.caption &&
                         <p className="postCaption">
-                            <b>{post.username}</b> {post.caption}
+                            <strong><Link className="commentLink" to={`/profile/${post.email}`}>{post.username}</Link></strong> {post.caption}
                         </p>
                         }
                         {comments.map((comment , i) => (
                             <p key={i} className="postCaption">
-                                <b>{comment.username}</b> {comment.text}
+                                <strong><Link className="commentLink" to={`/profile/${post.email}`}>{comment.username}</Link></strong> {comment.text}
                             </p>
                         ))}
                     </div>

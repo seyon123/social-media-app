@@ -98,12 +98,12 @@ function Post({ postId, post, user }) {
             <div className="postComments">
                 {post.caption &&
                 <p className="postCaption">
-                    <strong>{post.username}</strong> {post.caption}
+                    <strong><Link className="commentLink" to={`/profile/${post.email}`}>{post.username}</Link></strong> {post.caption}
                 </p>
                 }
                 {comments.map((comment , i) => (
                     <p key={i} className="postCaption">
-                        <strong>{comment.username}</strong> {comment.text}
+                        <strong><Link className="commentLink" to={`/profile/${post.email}`}>{comment.username}</Link></strong> {comment.text}
                     </p>
                 ))}
                 <Link to={`/post/${postId}`}>
