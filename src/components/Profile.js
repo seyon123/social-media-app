@@ -13,6 +13,10 @@ function Profile() {
     const [{ user }, dispatch] = useStateValue();
 
     useEffect(() => {
+		document.title = `${posts[0]?.post.username} | Reacttagram`;
+	}, [posts[0]?.post.username])
+
+    useEffect(() => {
 
         if(userid && userid){
             db.collection("posts").orderBy('timestamp', 'desc').onSnapshot(snapshot => {
@@ -28,12 +32,10 @@ function Profile() {
 
     }, [userid])
 
-    console.log(posts);
-
     return (
         <div>
             <div className="profileContainer">
-                <img className="profileAvatar" src={posts[0]?.post.avatar}/>
+                <img className="profileAvatar" src={posts[0]?.post.avatar} alt="avatar"/>
                 <h2 className="profileName">{posts[0]?.post.username}</h2>
             </div>
 

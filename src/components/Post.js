@@ -12,6 +12,10 @@ function Post({ postId, post, user }) {
     const [hasMoreComments, setHasMoreComments] = useState(false);
     const icon = document.getElementById(postId);
 
+    useEffect(() => {
+		document.title = `Home | Reacttagram`;
+	}, [])
+
 
     useEffect(() => {
         if(postId){
@@ -52,9 +56,9 @@ function Post({ postId, post, user }) {
                 });
             }else{
                 db.collection("users").doc(user.email).collection("likes").doc(postId).delete().then(function() {
-                    console.log("Document successfully deleted!");
+                    console.log("Unliked Photo!");
                 }).catch(function(error) {
-                    console.error("Error removing document: ", error);
+                    console.error("Error unliking: ", error);
                 });
             }
         }

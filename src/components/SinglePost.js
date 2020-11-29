@@ -10,9 +10,14 @@ function SinglePost() {
 
     const [comments, setComments] = useState([]);
     const [comment, setComment] = useState('');
+    const [likedPosts, setlikedPosts] = useState([]);
     const [post, setPost] = useState({});
     const [{ user }, dispatch] = useStateValue();
     const icon = document.getElementById(id);
+
+    useEffect(() => {
+		document.title = `${(post?.username +" "+ post?.caption)} | Reacttagram`;
+	}, [post?.caption, post?.username])
 
     useEffect(() => {
         if(id){
@@ -34,6 +39,19 @@ function SinglePost() {
         }
     }, [id])
 
+    useEffect(()=> {
+        if(id && user){
+
+            db.collection("users").doc(user.email).collection("likes").onSnapshot((snapshot)=>{
+                setlikedPosts(snapshot.docs.map((doc)=>doc.id));
+            });
+
+            if(likedPosts.indexOf(id) >= 0){
+                icon.classList.add('fas');
+            }
+        }
+    }, [id, likedPosts.length, icon, user])
+
     const postComment= (event) => {
         event.preventDefault();
         db.collection("posts").doc(id).collection("comments").add({
@@ -54,9 +72,9 @@ function SinglePost() {
                 });
             }else{
                 db.collection("users").doc(user.email).collection("likes").doc(id).delete().then(function() {
-                    console.log("Document successfully deleted!");
+                    console.log("Unliked Photo!");
                 }).catch(function(error) {
-                    console.error("Error removing document: ", error);
+                    console.error("Error unliking: ", error);
                 });
             }
         }
@@ -79,7 +97,7 @@ function SinglePost() {
                             alt={post.username}
                             title={post.username}
                         />
-                        <h3 className="postUsername">{post.username}</h3>
+                        <Link className="commentLink" to={`/profile/${post.email}`}><h3 className="postUsername">{post.username}</h3></Link>
                     </div>
                     <div className="postComments singlePostComments">
                         {post.caption &&
