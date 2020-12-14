@@ -10,7 +10,8 @@
   display: none;
   width: 100%;
   height: 100vh;
-  opacity: 60%;
+  filter: alpha(opacity=50);
+	opacity: 0.6;
   z-index: 1;
   position: fixed;
   top: 0;
