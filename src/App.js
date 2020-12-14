@@ -56,11 +56,17 @@ function App() {
 					<Route exact path="/post/:id">
 						<Header />
 						<SinglePost />
+						{user ?
+							<Upload user={user}/> : ""
+						}
 						<Footer/>
 					</Route>
 					<Route exact path="/profile/:userid">
 						<Header />
 						<Profile />
+						{user ?
+							<Upload user={user}/> : ""
+						}
 						<Footer/>
 					</Route>
 					<Route exact path="/">

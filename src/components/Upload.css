@@ -114,9 +114,11 @@ input[type="file"] {
 	border-radius: 50%;
 	color: var(--white);
     cursor: pointer;
-    position: fixed;
-    bottom: 0;
-    right: 0;
+	position: sticky;
+	float: right;
+	margin-top: -60px;
+    bottom: 20px;
+    right: 0px;
 }
 
 @media screen and (max-width: 768px) {
