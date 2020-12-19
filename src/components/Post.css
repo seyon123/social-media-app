@@ -47,6 +47,7 @@
 
 .postHeart{
     color: var(--purple);
+    cursor: pointer;
 }
 
 .postComments {

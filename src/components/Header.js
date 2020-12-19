@@ -44,8 +44,8 @@ function Header() {
 			</Link>
 
 			<div className="headerSearchContainer">
-				{/* <input className="headerSearchInput" type="text" />
-				<i className="fas fa-search headerSearchIcon"></i> */}
+				<input className="headerSearchInput" type="text" />
+				<i className="fas fa-search headerSearchIcon"></i>
 			</div>
 			<div className="break" ></div>
 
@@ -58,7 +58,7 @@ function Header() {
 
 				<Link target="_blank" to="/chat" className="link headerOptionBasket" onClick={(event) => {event.preventDefault(); window.open("http://messagemeapp.netlify.app/");}}>
 					<div className="headerOptionBasket">
-						<i className="far fa-comment"></i>
+						<i className="far fa-comments"></i>
 					</div>
 				</Link>
 
